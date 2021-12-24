@@ -1,0 +1,43 @@
+.Layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 9em 4em;
+  margin-top: 4em;
+  min-height: 100vh;
+
+  @media screen and (max-width: 1020px) {
+    grid-template-columns: 1fr;
+    margin-top: 2em;
+  }
+
+  @media screen and (max-width: 550px) {
+    padding: 0;
+    padding-top: 9em;
+    aside {
+      border: none;
+      margin: 0 auto;
+    }
+  }
+}
+
+h2,
+h3,
+h4 {
+  color: white;
+}
+
+aside {
+  border: 3px solid var(--orange);
+  padding: 2em;
+  width: 360px;
+  border-radius: 6px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.8s;
+}

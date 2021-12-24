@@ -1,0 +1,85 @@
+.FormWrapper {
+  margin-top: 3em;
+
+  .Form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+
+    .fullBleed {
+      grid-column-start: 1;
+      grid-column-end: -1;
+    }
+
+    .left {
+      grid-column-start: 1;
+    }
+    .right {
+      margin-left: auto;
+      grid-column-start: -2;
+      grid-column-end: -1;
+    }
+
+    .ant-col-offset-8 {
+      margin: 0;
+    }
+
+    .btn-center {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 4;
+    }
+
+    .smallInputs {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 3em;
+      color: white;
+
+      .ant-form-item-explain-error {
+        font-size: 0.7em;
+        text-align: left;
+        margin-bottom: 1em;
+      }
+      .ant-form-item-label > label {
+        color: white;
+      }
+
+      @media screen and (max-width: 450px) {
+        flex-direction: unset;
+      }
+    }
+  }
+
+  .ant-form-item-control-input-content {
+    flex: inherit;
+    padding: 0;
+  }
+
+  .ant-form-item-label {
+    overflow: inherit;
+    text-align: left;
+  }
+
+  .isValid {
+    height: auto;
+    pointer-events: all;
+    flex: inherit;
+    padding: 0;
+    padding: 1em 2em;
+    &:hover,
+    &:focus {
+      background-color: rgb(51, 114, 153);
+    }
+  }
+
+  .ant-form-item-has-error ~ .ant-form-item .isValid {
+    background-color: rgb(128, 74, 74);
+  }
+}

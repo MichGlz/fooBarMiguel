@@ -1,0 +1,155 @@
+.customer-wrapper {
+  height: 100%;
+  width: 100%;
+  margin-top: 98px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("/assets/bg_dark.svg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Customer {
+  display: grid;
+  color: white;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1.5rem;
+  padding: 2rem;
+  height: fit-content;
+  min-height: 100vh;
+
+  .TimeToClose {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 1;
+  }
+  .Beers-wrapper {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 2;
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-left: 6vw;
+  }
+
+  .BeersMenu {
+    grid-column-start: -3;
+    grid-row-start: 3;
+  }
+
+  aside {
+    grid-row-start: 3;
+    grid-column-start: -2;
+    width: fit-content;
+    padding: 1rem 1rem;
+    text-align: left;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    height: 100%;
+    border: solid 2px var(--orange);
+    border-radius: 1em;
+    background-color: rgba(0, 0, 0, 0.25);
+
+    ul {
+      padding: 0 0.5rem;
+      height: 100%;
+    }
+
+    li {
+      font-size: 2rem;
+    }
+    li:first-child {
+      font-size: 3.2rem;
+      color: orange;
+    }
+    li:nth-child(2) {
+      font-size: 2.6rem;
+    }
+    li:nth-child(3) {
+      font-size: 2.4rem;
+    }
+    li:nth-child(4) {
+      font-size: 2.2rem;
+    }
+    li:nth-child(5) {
+      font-size: 2rem;
+    }
+  }
+
+  #fullscreen {
+    background-color: rgba(15, 104, 104, 0);
+    padding: 0.1rem;
+    width: 30px;
+    aspect-ratio: 1;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    border: none;
+    filter: drop-shadow(0px 0px 5px black);
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  @media screen and (max-width: 1020px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (max-width: 640px) {
+    height: fit-content;
+    .Beers-wrapper {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+}
+
+.Beers {
+  width: 100%;
+  height: 40px;
+  gap: 1rem;
+  align-items: center;
+  transition: transform 0.5s;
+  overflow: hidden;
+  position: relative;
+}
+
+div.beerPx {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/assets/beer-pixel.svg");
+  background-repeat: repeat;
+  background-position: right;
+  transition: transform 0.3s;
+}
+
+.customer-wrapper:fullscreen {
+  padding: 2rem;
+  .Customer {
+    gap: 3rem;
+    min-height: auto;
+  }
+  .Beers {
+    height: 50px;
+  }
+
+  .BeersMenu {
+    & > h2 {
+      font-size: 2rem;
+    }
+  }
+  .BeerProduct {
+    font-size: 180%;
+  }
+  .price {
+    font-size: 2rem;
+  }
+}

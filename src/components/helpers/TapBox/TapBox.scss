@@ -1,0 +1,99 @@
+.TapBox {
+  width: 100%;
+  min-width: 90px;
+  background-color: var(--hola);
+
+  & > p {
+    margin-top: 1rem;
+    opacity: 0.2;
+  }
+
+  svg {
+    .box-container p {
+      margin: 0;
+      color: rgb(250, 244, 237);
+      font-size: 180%;
+      max-width: 10ch;
+      text-align: center;
+      text-shadow: 2px 0px 8px black;
+    }
+
+    .img-wrapper {
+      width: 100%;
+      height: 100%;
+      img {
+        object-position: center;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+
+    .cls-1 {
+      fill: none;
+    }
+
+    .cls-2 {
+      fill: #ab3f8d;
+    }
+
+    .cls-3 {
+      fill: #c05e9f;
+    }
+
+    .cls-4 {
+      fill: #221e20;
+    }
+
+    .cls-5 {
+      fill: #81868a;
+    }
+
+    .cls-6 {
+      fill: #b9bbc3;
+    }
+
+    .cls-7 {
+      clip-path: url(#clip-path-100);
+    }
+
+    .cls-8 {
+      fill: #383f37;
+    }
+
+    .cls-9 {
+      fill: #f4d28d;
+    }
+
+    .cls-10 {
+      fill: #f4bf4a;
+    }
+
+    .cls-11 {
+      fill: #fff;
+    }
+
+    .cls-12 {
+      fill: #b1862c;
+    }
+
+    .cls-13 {
+      clip-path: url(#clip-path-102);
+    }
+
+    .cls-14 {
+      fill: #92c680;
+    }
+
+    .cls-15 {
+      fill: #134721;
+    }
+
+    .cls-16 {
+      fill: #e8868f;
+    }
+
+    .cls-17 {
+      fill: #8b1f25;
+    }
+  }
+}

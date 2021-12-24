@@ -1,0 +1,86 @@
+.TimeBar {
+  width: 500px;
+  max-width: min(600px, 80vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  transition: filter 0.2s;
+  font-size: calc(0.4rem + 0.5vw);
+  h2 {
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+  }
+  & > * {
+    margin: 0;
+    padding: 0;
+  }
+
+  &.no-active {
+    filter: brightness(0.2);
+  }
+
+  .number-bar {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    p {
+      font-size: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  svg {
+    width: 40%;
+    max-width: min(250px, 40vw);
+    transform: scaleX(-1);
+
+    .cls-1 {
+      fill: none;
+    }
+
+    .cls-2 {
+      fill: #81868a;
+    }
+
+    .cls-3 {
+      fill: #b9bbc3;
+    }
+
+    .cls-4 {
+      clip-path: url(#clip-path);
+    }
+
+    .cls-5 {
+      fill: #383f37;
+    }
+
+    .cls-6 {
+      fill: #b08585;
+    }
+
+    .cls-27 {
+      fill: #000000;
+    }
+
+    .cls-8 {
+      fill: #d32222;
+    }
+
+    .cls-9 {
+      fill: #fff;
+    }
+
+    .cls-10 {
+      fill: #a74f4f;
+    }
+
+    #level {
+      transition: transform 0.5s;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@use "../../index.scss";
+.Form {
+  background: var(--theme-page-background);
+  color: var(--theme-page-text);
+}
+.Layout {
+  height: 100%;
+  .notShown {
+    display: inline;
+  }
+}
+
+.produclist-wrapper {
+  height: 100%;
+  max-height: calc(100vh - 98px);
+  overflow-y: scroll;
+  margin-right: 10px;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}

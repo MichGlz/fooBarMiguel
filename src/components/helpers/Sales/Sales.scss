@@ -1,0 +1,26 @@
+.manager {
+  .sales {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+
+    .figures {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      gap: 5rem;
+      margin: 3rem 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .manager {
+    .sales {
+      .figures {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  }
+}

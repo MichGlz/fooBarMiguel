@@ -1,0 +1,59 @@
+.BeersMenu {
+  border: solid 2px var(--orange);
+  border-radius: 1em;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 1rem 0;
+  height: 100%;
+  margin-left: 6vw;
+
+  .beers-list {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  & > h2 {
+    font-size: 1.5rem;
+  }
+}
+.BeerProduct {
+  margin-right: 20px;
+  color: white;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  padding: 0.5rem 0;
+  font-size: 150%;
+  filter: drop-shadow(0px 0px 5px rgb(0, 0, 0));
+
+  & * {
+    margin: 0;
+    padding: 0;
+  }
+
+  & > div:not(.dots) {
+    display: flex;
+    align-items: baseline;
+    gap: 3rem;
+    padding: 0 2rem;
+  }
+  .dots {
+    background: url(/assets/dots.svg);
+    background-size: auto 50px;
+    background-repeat: repeat-x;
+    background-position: center;
+  }
+
+  .price {
+    font-size: 1.5rem;
+    padding: 0 2rem 0 1rem;
+  }
+
+  img {
+    width: 8vw;
+    height: 8vw;
+    left: -10px;
+    top: 0px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 0px black;
+  }
+}

@@ -1,0 +1,138 @@
+@use "../../index.scss";
+
+.Bartender {
+  display: grid;
+  color: white;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1rem;
+  padding: 2rem;
+  margin-top: 98px;
+
+  .TimeToClose {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 1;
+  }
+
+  .Depot {
+    border: solid 2px var(--orange);
+    border-radius: 1em;
+    max-height: 35vh;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    filter: drop-shadow(0px 0px 2px black);
+
+    .sorting-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    button {
+      color: white;
+      border: none;
+      background-color: transparent;
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--cyan);
+      }
+    }
+
+    ul {
+      width: 100%;
+      height: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem 2rem;
+    }
+
+    @media screen and (max-width: 1030px) {
+      overflow-y: scroll;
+      ul {
+        height: auto;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1020px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.Bartender > * {
+  grid-column-start: 1;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+  font-size: 80%;
+  padding: 0;
+}
+
+.OrderList {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  grid-row-end: -1;
+  display: grid;
+  grid-template-columns: 1fr 80% 1fr;
+  gap: 1rem;
+  height: 75vh;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0px 0px 2px black);
+
+  .to-do {
+    grid-column-start: 2;
+  }
+
+  ul li ul {
+    border: solid 2px white;
+    padding: 3px;
+    transition: 0.5s;
+  }
+
+  ul li + li {
+    margin-top: 0.5rem;
+  }
+
+  li.Order {
+    transition: color 0.2s;
+  }
+
+  li.Order + li.Order {
+    margin-top: 1rem;
+  }
+
+  @media screen and (max-width: 1030px) {
+    width: 100%;
+    padding: 2rem 1rem;
+    grid-template-columns: 1fr;
+    .to-do {
+      grid-column-start: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Bartender {
+    max-width: 400px;
+    height: fit-content;
+    background-image: url("/assets/bg_dark.svg");
+    background-size: cover;
+
+    grid-template-columns: 1fr;
+    .OrderList {
+      width: 90%;
+      grid-column-start: 1;
+      grid-row-start: 2;
+    }
+  }
+}

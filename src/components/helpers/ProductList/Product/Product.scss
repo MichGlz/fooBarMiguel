@@ -1,0 +1,197 @@
+@use "../../../../index.scss";
+
+// .react-card-flip {
+//   z-index: 999 !important;
+// }
+
+.Product {
+  background: url(/assets/square-04-03-01.svg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-right: 20px;
+  height: 390px;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2em;
+
+  img {
+    width: 150px;
+    height: 150px;
+    left: -10px;
+    top: 0px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 0px black;
+  }
+
+  .details {
+    font-size: 0.8em;
+  }
+
+  .moreInfo {
+    position: absolute;
+    right: 30px;
+    top: -36px;
+    background-color: var(--pink);
+    border: none;
+    color: white;
+    box-shadow: 0 0 4px 0px #898989;
+    padding: 0.5em;
+  }
+
+  .mainInfo {
+    display: flex;
+    align-items: center;
+    margin: 3.4em 0 2.4em;
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      p,
+      h3 {
+        color: white;
+      }
+
+      h3 {
+        text-align: center;
+        margin-bottom: -1em;
+      }
+      .money {
+        display: flex;
+        align-items: center;
+        margin-top: 1em;
+
+        img {
+          box-shadow: none;
+          width: 40px;
+          height: auto;
+          margin-right: 1em;
+        }
+
+        .blink {
+          animation: blink 0.2s linear infinite;
+        }
+
+        @keyframes blink {
+          0% {
+            filter: brightness(1.5) hue-rotate(90deg);
+          }
+          50% {
+            filter: brightness(0.5) hue-rotate(0deg);
+          }
+          100% {
+            filter: brightness(1.5) hue-rotate(-90deg);
+          }
+        }
+
+        .price {
+          font-size: 2em;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2em;
+
+    .amountWrapper {
+      display: flex;
+      align-items: center;
+      margin-left: 2em;
+
+      button {
+        background-color: white;
+
+        font-size: 1.3em;
+        padding: 0.5em;
+        color: black;
+      }
+
+      .amount {
+        margin: 0 1em;
+      }
+    }
+
+    .button-add-wrapper {
+      position: relative;
+    }
+    .buttonAdd {
+      background-color: var(--blue);
+
+      color: white;
+      font-size: 1.1em;
+      padding: 0.9em 0.9em;
+    }
+
+    .feedback-beer {
+      background-image: url("/assets/beer-pixel.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 50%;
+      aspect-ratio: 0.9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(0, 0) scale(0);
+      display: none;
+      p {
+        background-color: var(--pink);
+        border-radius: 50%;
+        margin-top: -40%;
+        margin-left: 50%;
+      }
+      &.show {
+        display: block;
+        animation: show 0.5s ease 1;
+      }
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: translate(0, 0) scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.5);
+  }
+  100% {
+    transform: translate(200%, -200%) scale(2);
+  }
+}
+
+.ProductReverse {
+  background-color: #033141;
+  font-family: sans-serif;
+  padding: 3em;
+}
+
+.reverseCard {
+  position: absolute;
+  right: 30px;
+  top: -36px;
+  background-color: var(--pink);
+  border: none;
+  color: white;
+  box-shadow: 0 0 4px 0px #898989;
+  padding: 0.5em;
+}
+
+@media screen and (max-width: 450px) {
+  .Product {
+    margin: auto;
+    padding: 0;
+    width: 90%;
+  }
+}

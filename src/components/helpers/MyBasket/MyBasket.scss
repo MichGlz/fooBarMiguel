@@ -1,0 +1,77 @@
+.MyBasket {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  ul {
+    margin: 3em 0;
+  }
+  .addedItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid white;
+
+    .deleteItem {
+      border: none;
+      background: transparent;
+      font-size: 1.5em;
+      color: red;
+      cursor: pointer;
+    }
+
+    input {
+      color: black;
+      text-align: center;
+      padding: 1em 0.5em;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    .actions {
+      .amountWrapper {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: 1em;
+
+        button {
+          background-color: black;
+        }
+      }
+    }
+  }
+
+  .totalOrder {
+    display: flex;
+    color: black;
+    padding-top: 3em;
+    background-image: url(/assets/cloud-03.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2em;
+    padding-top: 4em;
+    margin-bottom: 3em;
+
+    p:nth-child(2) {
+      display: flex;
+      align-items: center;
+      & span {
+        font-size: 2em;
+        margin-left: 0.5em;
+      }
+    }
+  }
+  button {
+    background-color: var(--blue);
+    padding: 1em;
+  }
+}

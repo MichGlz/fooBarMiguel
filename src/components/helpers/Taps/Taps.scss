@@ -1,0 +1,12 @@
+.Taps {
+  width: 100%;
+  display: flex;
+  padding: 0.5rem 1rem;
+  gap: 1rem;
+  align-items: flex-end;
+
+  height: fit-content;
+  @media screen and (max-width: 1030px) {
+    overflow-x: scroll;
+  }
+}
