@@ -85,7 +85,7 @@ function App() {
       .then((data) => {
         // console.log(data);
         const beers = addStuff(data);
-        // console.log(beers);
+        console.log(beers);
         setProducts(beers);
         fetchData(); // <-- (2) invoke on mount
       });

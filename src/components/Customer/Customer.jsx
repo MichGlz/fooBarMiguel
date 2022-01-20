@@ -1,8 +1,10 @@
 import "./Customer.scss";
 import "../helpers/BeersMenu/BeersMenu.jsx";
+
 import TimeToClose from "../helpers/TimeToClose/TimeToClose";
 import React, { useEffect, useState } from "react";
 import BeersMenu from "../helpers/BeersMenu/BeersMenu.jsx";
+import MemoryGame from "../helpers/MemoryGame/MemoryGame.jsx";
 
 function Beers(props) {
   const allOrders = [...props.serving, ...props.queue];
@@ -28,6 +30,7 @@ export default function Customer(props) {
   }
 
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isFirstCard, setIsFirstCard] = useState(false);
 
   const styleBtn = {
     background: `url(./assets/fullscreen${isFullScreen ? "Off" : "On"}.svg)`,
@@ -57,7 +60,8 @@ export default function Customer(props) {
           <h2>Queue</h2> <Beers {...props} isFullScreen={isFullScreen} />
         </div>
 
-        {!props.isMobile && <BeersMenu products={props.products} isHappyHour={props.isHappyHour} />}
+        {isFullScreen && <BeersMenu products={props.products} isHappyHour={props.isHappyHour} />}
+        {!props.isMobile && !isFullScreen && <MemoryGame products={props.products} isFirstCard={isFirstCard} setIsFirstCard={setIsFirstCard} />}
 
         <aside>
           <h2>Orders Ready</h2>
