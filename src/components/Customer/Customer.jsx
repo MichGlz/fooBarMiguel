@@ -37,7 +37,7 @@ export default function Customer(props) {
     background: `url(./assets/fullscreen${isFullScreen ? "Off" : "On"}.svg)`,
   };
 
-  //----checking for orders ready----
+  //----searching customer order in orders ready----
 
   useEffect(() => {
     props.ordersID.forEach((order) => {
@@ -55,7 +55,7 @@ export default function Customer(props) {
     });
   }, [props.ordersReady]);
 
-  //---------------------------------
+  //------------------------------------------------
 
   useEffect(() => {
     const customerPage = document.querySelector(".customer-wrapper");

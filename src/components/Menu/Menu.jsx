@@ -99,6 +99,7 @@ export default function Menu(props) {
     });
   }
 
+  //----searching customer order in orders ready----
   useEffect(() => {
     props.ordersID.forEach((order) => {
       if (props.ordersReady.find((orderReady) => orderReady.id === order.id)) {
@@ -114,6 +115,7 @@ export default function Menu(props) {
       }
     });
   }, [props.ordersReady]);
+  //------------------------------------------------
 
   const style = {
     position: "absolute",
