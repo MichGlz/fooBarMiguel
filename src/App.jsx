@@ -40,7 +40,7 @@ function App() {
   const [allOrders, setAllOrders] = useState([]);
   // const [orderReady, setOrderRedady] = useState({});
 
-  //---------orders ready to serve---------
+  //---------consts moved from menu---------
   const [ordersID, setOrdersID] = useState([]);
   const [customerName, setCustomerName] = useState("");
   const [isYourOrderReady, setIsYourOrderReady] = useState(false);
