@@ -1,10 +1,9 @@
 import "./Customer.scss";
-import "../helpers/BeersMenu/BeersMenu.jsx";
-
 import TimeToClose from "../helpers/TimeToClose/TimeToClose";
 import React, { useEffect, useState } from "react";
 import BeersMenu from "../helpers/BeersMenu/BeersMenu.jsx";
 import MemoryGame from "../helpers/MemoryGame/MemoryGame.jsx";
+import ModalOrderReady from "../helpers/ModalOrderReady/ModalOrderReady";
 
 function Beers(props) {
   const allOrders = [...props.serving, ...props.queue];
@@ -36,6 +35,26 @@ export default function Customer(props) {
     background: `url(./assets/fullscreen${isFullScreen ? "Off" : "On"}.svg)`,
   };
 
+  //----checking for orders ready----
+
+  useEffect(() => {
+    props.ordersID.forEach((order) => {
+      if (props.ordersReady.find((orderReady) => orderReady.id === order.id)) {
+        const orderReady = props.ordersReady.find((orderReady) => orderReady.id === order.id);
+        props.setYourOrderReady({ id: orderReady.id, bartender: orderReady.bartender, customer: order.customer });
+        props.setIsYourOrderReady(true);
+        // window.alert("your order " + ID + " is ready");
+
+        props.setOrdersID((oldArr) => {
+          const copy = oldArr.filter((oldOrder) => oldOrder.id !== order.id);
+          return copy;
+        });
+      }
+    });
+  }, [props.ordersReady]);
+
+  //---------------------------------
+
   useEffect(() => {
     const customerPage = document.querySelector(".customer-wrapper");
     const fullScreenElement = document.fullscreenElement;
@@ -55,6 +74,7 @@ export default function Customer(props) {
   return (
     <div className="customer-wrapper">
       <div className="Customer">
+        {props.isYourOrderReady && <ModalOrderReady {...props.yourOrderReady} setIsYourOrderReady={props.setIsYourOrderReady} />}
         <TimeToClose now={props.now} isHappyHour={props.isHappyHour} isOpen={props.isOpen} isMobile={props.isMobile} />
         <div className="Beers-wrapper">
           <h2>Queue</h2> <Beers {...props} isFullScreen={isFullScreen} />
