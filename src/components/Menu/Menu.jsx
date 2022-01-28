@@ -12,10 +12,13 @@ export default function Menu(props) {
   }
   const beers = props.products.filter((beer) => beer.onTap);
   const [basket, setBasket] = useState([]);
-  const [ordersID, setOrdersID] = useState([]);
-  const [customerName, setCustomerName] = useState("");
-  const [isYourOrderReady, setIsYourOrderReady] = useState(false);
-  const [yourOrderReady, setYourOrderReady] = useState({});
+
+  //---------------moved to app-----------
+  // const [ordersID, setOrdersID] = useState([]);
+  // const [customerName, setCustomerName] = useState("");
+  // const [isYourOrderReady, setIsYourOrderReady] = useState(false);
+  // const [yourOrderReady, setYourOrderReady] = useState({});
+  //----------------------------------------
 
   function addToBasket(product) {
     setBasket(function (oldBasket) {
@@ -90,21 +93,21 @@ export default function Menu(props) {
   }
 
   function addID(orderID) {
-    setOrdersID((oldArr) => {
+    props.setOrdersID((oldArr) => {
       const copy = [orderID, ...oldArr];
       return copy;
     });
   }
 
   useEffect(() => {
-    ordersID.forEach((order) => {
+    props.ordersID.forEach((order) => {
       if (props.ordersReady.find((orderReady) => orderReady.id === order.id)) {
         const orderReady = props.ordersReady.find((orderReady) => orderReady.id === order.id);
-        setYourOrderReady({ id: orderReady.id, bartender: orderReady.bartender, customer: order.customer });
-        setIsYourOrderReady(true);
+        props.setYourOrderReady({ id: orderReady.id, bartender: orderReady.bartender, customer: order.customer });
+        props.setIsYourOrderReady(true);
         // window.alert("your order " + ID + " is ready");
 
-        setOrdersID((oldArr) => {
+        props.setOrdersID((oldArr) => {
           const copy = oldArr.filter((oldOrder) => oldOrder.id !== order.id);
           return copy;
         });
@@ -120,7 +123,7 @@ export default function Menu(props) {
   if (props.isMobile) {
     return (
       <div className="Layout">
-        {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
+        {props.isYourOrderReady && <ModalOrderReady {...props.yourOrderReady} setIsYourOrderReady={props.setIsYourOrderReady} />}
         {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} className="confetti" />}
         {props.cart ? (
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
@@ -134,9 +137,9 @@ export default function Menu(props) {
             increaseAmount={increaseAmount}
             addMoreBeer={addMoreBeer}
             basket={basket}
-            ordersID={ordersID}
-            customerName={customerName}
-            setCustomerName={setCustomerName}
+            ordersID={props.ordersID}
+            customerName={props.customerName}
+            setCustomerName={props.setCustomerName}
           />
         )}
         <CartBtn basket={basket} cart={props.cart} setCart={props.setCart} />
@@ -145,7 +148,7 @@ export default function Menu(props) {
   } else {
     return (
       <div className="Layout">
-        {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
+        {props.isYourOrderReady && <ModalOrderReady {...props.yourOrderReady} setIsYourOrderReady={props.setIsYourOrderReady} />}
         {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} className="confetti" />}
         <div className="produclist-wrapper">
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
@@ -159,9 +162,9 @@ export default function Menu(props) {
           increaseAmount={increaseAmount}
           addMoreBeer={addMoreBeer}
           basket={basket}
-          ordersID={ordersID}
-          customerName={customerName}
-          setCustomerName={setCustomerName}
+          ordersID={props.ordersID}
+          customerName={props.customerName}
+          setCustomerName={props.setCustomerName}
         />
       </div>
     );

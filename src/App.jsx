@@ -18,7 +18,6 @@ function App() {
   const [data, setData] = useState([]);
   const [isCustomer, setIsCustomer] = useState(false);
   const [now, setNow] = useState(new Date().getTime());
-  // const [allOrders, setAllOrders] = useState([]);
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
   const [isHappyHour, setIsHappyHour] = useState(false);
@@ -37,8 +36,16 @@ function App() {
   });
   const [oldServing, setOldServing] = useState([]);
   const [newServing, setNewServing] = useState([]);
-  // const [orderReady, setOrderRedady] = useState({});
   const [dayOrders, setDayOrders] = useState(0);
+  const [allOrders, setAllOrders] = useState([]);
+  // const [orderReady, setOrderRedady] = useState({});
+
+  //---------orders ready to serve---------
+  const [ordersID, setOrdersID] = useState([]);
+  const [customerName, setCustomerName] = useState("");
+  const [isYourOrderReady, setIsYourOrderReady] = useState(false);
+  const [yourOrderReady, setYourOrderReady] = useState({});
+  //---------------------------------------
 
   const isMobile = windowDimension <= 640;
 
@@ -193,7 +200,28 @@ function App() {
           <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} dayOrders={dayOrders} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
           <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} isCustomer={isCustomer} setIsCustomer={setIsCustomer} isMobile={isMobile} />} />
-          <Route exact path="/Menu" element={<Menu products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} setCart={setCart} />} />
+          <Route
+            exact
+            path="/Menu"
+            element={
+              <Menu
+                products={products}
+                cart={cart}
+                isMobile={isMobile}
+                ordersReady={ordersReady}
+                isHappyHour={isHappyHour}
+                setCart={setCart}
+                ordersID={ordersID}
+                setOrdersID={setOrdersID}
+                customerName={customerName}
+                setCustomerName={setCustomerName}
+                isYourOrderReady={isYourOrderReady}
+                setIsYourOrderReady={setIsYourOrderReady}
+                yourOrderReady={yourOrderReady}
+                setYourOrderReady={setYourOrderReady}
+              />
+            }
+          />
         </Routes>
       </main>
       <Footer />

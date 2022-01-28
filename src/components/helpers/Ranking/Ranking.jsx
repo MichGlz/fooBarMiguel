@@ -4,7 +4,7 @@ export default function TopBeer(props) {
   const ranking = props.ranking;
   let realRanking = [];
   for (const [key, value] of Object.entries(ranking)) {
-    console.log(`${key}: ${value}`);
+    // console.log(`${key}: ${value}`);
     const beer = { name: key, amount: value };
     realRanking = [...realRanking, beer];
   }
