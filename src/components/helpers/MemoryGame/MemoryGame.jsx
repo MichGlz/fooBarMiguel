@@ -66,6 +66,7 @@ export default function MemoryGame(props) {
     noMatchs > 9 &&
       setTimeout(() => {
         prepareCards();
+        setNoMatchs(0);
       }, 4000);
   }, [noMatchs]);
 
