@@ -55,6 +55,20 @@ function App() {
     setCart(state);
   }
 
+  //----------fetch beer types---------------
+  useEffect(() => {
+    fetch("https://los-amigos.herokuapp.com/beertypes")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        const beers = addStuff(data);
+        console.log(beers);
+        setProducts(beers);
+      });
+  }, []);
+  //-----------------------------------------
+
+  //-----fetch data every 5sec---------------
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
     // (1) define within effect callback scope
@@ -76,6 +90,8 @@ function App() {
       }
     };
 
+    fetchData(); // <-- (2) invoke on mount
+
     const id = setInterval(() => {
       fetchData(); // <-- (3) invoke in interval callback
     }, 5000);
@@ -87,21 +103,12 @@ function App() {
       upDateNow();
     }, 1000);
 
-    fetch("https://los-amigos.herokuapp.com/beertypes")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        const beers = addStuff(data);
-        // console.log(beers);
-        setProducts(beers);
-        fetchData(); // <-- (2) invoke on mount
-      });
-
     return () => {
       clearInterval(id);
       clearInterval(id2);
     };
   }, []);
+  //-----------------------------------------
 
   //-----------------------
   useEffect(() => {
