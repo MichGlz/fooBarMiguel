@@ -18,7 +18,7 @@ function App() {
   const [data, setData] = useState([]);
   const [isCustomer, setIsCustomer] = useState(false);
   const [now, setNow] = useState(new Date().getTime());
-  const [allOrders, setAllOrders] = useState([]);
+  // const [allOrders, setAllOrders] = useState([]);
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
   const [isHappyHour, setIsHappyHour] = useState(false);
@@ -37,7 +37,7 @@ function App() {
   });
   const [oldServing, setOldServing] = useState([]);
   const [newServing, setNewServing] = useState([]);
-  const [orderReady, setOrderRedady] = useState({});
+  // const [orderReady, setOrderRedady] = useState({});
   const [dayOrders, setDayOrders] = useState(0);
 
   const isMobile = windowDimension <= 640;
