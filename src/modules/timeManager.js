@@ -4,6 +4,7 @@ export default function timeManager(now, isHappyHour, setIsHappyHour, setIsOpen)
   const happyHourTime = 18;
   const closingHour = 22;
   const openHour = 10;
+  //we can use a second argument as minutes, settingTime(openHour,30)
   const happyHourStar = settingTime(happyHourTime);
   const happyHourEnd = settingTime(happyHourTime + 1);
   const closingTime = settingTime(closingHour);

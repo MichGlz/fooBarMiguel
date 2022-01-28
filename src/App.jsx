@@ -96,21 +96,35 @@ function App() {
       fetchData(); // <-- (3) invoke in interval callback
     }, 5000);
 
+    return () => {
+      clearInterval(id);
+    };
+  }, []);
+  //-----------------------------------------
+
+  //------up date now every 1sec-------------
+  useEffect(() => {
     function upDateNow() {
       setNow(new Date().getTime());
     }
+
+    upDateNow();
+
     const id2 = setInterval(() => {
       upDateNow();
     }, 1000);
 
     return () => {
-      clearInterval(id);
       clearInterval(id2);
     };
   }, []);
   //-----------------------------------------
 
-  //-----------------------
+  useEffect(() => {
+    timeManager(now, isHappyHour, setIsHappyHour, setIsOpen);
+  }, [now]);
+
+  //----------checking in serving orders for orders ready------
   useEffect(() => {
     if (oldServing.length > 0) {
       oldServing.forEach((oldOrder, i, arr) => {
@@ -124,11 +138,7 @@ function App() {
       setOldServing([...newServing]);
     }
   }, [newServing]);
-  //------------------------------
-
-  useEffect(() => {
-    timeManager(now, isHappyHour, setIsHappyHour, setIsOpen);
-  }, [now]);
+  //-----------------------------------------------------------
 
   //-----------------------
   useEffect(() => {
