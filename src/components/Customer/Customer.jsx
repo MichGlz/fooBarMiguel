@@ -24,9 +24,11 @@ export default function Customer(props) {
     return null;
   }
 
-  if (!props.isCustomer) {
-    props.setIsCustomer(true);
-  }
+  useEffect(() => {
+    if (!props.isCustomer) {
+      props.setIsCustomer(true);
+    }
+  }, []);
 
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isFirstCard, setIsFirstCard] = useState(false);
