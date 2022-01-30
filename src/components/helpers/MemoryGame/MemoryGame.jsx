@@ -2,6 +2,9 @@ import "./MemoryGame.scss";
 import React from "react";
 import { useState, useEffect } from "react";
 import MemoryCard from "./MemoryCard";
+import ModalPlayAgain from "./ModalPlayAgain";
+import useSound from "use-sound";
+import sound from "../sounds/add.mp3";
 
 export default function MemoryGame(props) {
   const [allCards, setAllCards] = useState([]);
@@ -9,8 +12,14 @@ export default function MemoryGame(props) {
   const [secondCard, setSecondCard] = useState(null);
   const [gameDisabled, setGameDisabled] = useState(false);
   const [noMatchs, setNoMatchs] = useState(0);
+  const [isGameFinish, setIsGameFinish] = useState(false);
 
   // console.log(firstCard);
+
+  const [play] = useSound(sound, { interrupt: true });
+  useEffect(() => {
+    play();
+  }, [isGameFinish]);
 
   function setCards(card) {
     firstCard ? setSecondCard(card) : setFirstCard(card);
@@ -61,15 +70,24 @@ export default function MemoryGame(props) {
     gameBoard.style.pointerEvents = gameDisabled ? "none" : "all";
   }, [gameDisabled]);
 
+  function gameFinished() {
+    setTimeout(() => {
+      prepareCards();
+      setNoMatchs(0);
+      setIsGameFinish(true);
+    }, 1200);
+  }
+
   useEffect(() => {
     console.log(noMatchs);
-    noMatchs > 9 &&
-      setTimeout(() => {
-        prepareCards();
-        setNoMatchs(0);
-      }, 4000);
+    noMatchs > 9 && gameFinished();
   }, [noMatchs]);
 
   const displayCards = allCards.map((beer, i) => <MemoryCard key={"card0" + i} card={beer} setCards={setCards} flipped={beer === firstCard || beer === secondCard || beer.match} />);
-  return <section className="game">{displayCards}</section>;
+  return (
+    <>
+      {isGameFinish && <ModalPlayAgain setIsGameFinish={setIsGameFinish} />}
+      <section className="game">{displayCards}</section>
+    </>
+  );
 }

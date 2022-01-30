@@ -1,26 +1,11 @@
-import "./ModalOrderReady.scss";
-import useSound from "use-sound";
-import sound from "../sounds/pressbee.mp3";
-import { useEffect } from "react";
+import "./ModalPlayAgain.scss";
 
-export default function ModalOrderReady(props) {
-  const [play, { stop }] = useSound(sound, { interrupt: true });
-  useEffect(() => {
-    play();
-  });
-
-  const pic = props.bartender.toLowerCase() + ".png";
+export default function ModalPlayAgain(props) {
   return (
-    <div className="background-black-order">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 428.58 357.26">
+    <div className="play-again">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
         <g id="items-to-use">
-          <g id="hor-text-box-pic">
-            <foreignObject y="209.63" width="147.63" height="147.63">
-              <div className="pic-wrapper">
-                <img src={"./assets/" + pic} alt="beer label" />
-              </div>
-            </foreignObject>
-            <rect id="picture-holder" className="cls-1" y="209.63" width="147.63" height="147.63" />
+          <g id="hor-text-box-pic" transform="translate(-80 0)">
             <g>
               <polygon
                 className="cls-2"
@@ -32,23 +17,23 @@ export default function ModalOrderReady(props) {
               />
             </g>
 
-            <foreignObject x="223.29" y="132.86" width="122.86" height="48.88">
+            <foreignObject x="223.29" y="120" width="122.86" height="55">
               <button
-                className="ok-btn-modal"
+                className="btn-play-again"
                 onClick={() => {
-                  props.setIsYourOrderReady(false);
+                  setTimeout(() => {
+                    props.setIsGameFinish(false);
+                  }, 500);
                 }}
               >
-                OK
+                Play Again
               </button>
             </foreignObject>
 
-            <rect id="btn-holder" className="cls-1" x="223.29" y="132.86" width="122.86" height="48.88" />
+            <rect id="btn-holder" className="cls-1" x="223.29" y="120" width="122.86" height="55" />
 
             <foreignObject x="164.5" y="35.1" width="240.44" height="78.25">
-              <p>
-                Hi <span className="capitalize">{props.customer}</span> your order {props.id} is ready
-              </p>
+              <p>Well done!</p>
             </foreignObject>
             <rect id="text-holder" className="cls-1" x="164.5" y="35.1" width="240.44" height="78.25" />
           </g>

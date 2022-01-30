@@ -2,8 +2,8 @@ import "./Product.scss";
 import { useState, useEffect } from "react";
 import ReactCardFlip from "react-card-flip";
 import useSound from "use-sound";
-import sound from "./coin_effect.mp3";
-import sound2 from "./add.mp3";
+import sound from "../../sounds/coin_effect.mp3";
+import sound2 from "../../sounds/add.mp3";
 
 export default function Product(props) {
   const [flipped, setFlipped] = useState(false);

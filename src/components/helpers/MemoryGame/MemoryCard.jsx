@@ -2,12 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 export default function MemoryCard(props) {
-  const [isFlipped, setIsFlipped] = useState(false);
-
   function flipCard(e) {
     // setIsFlipped(!isFlipped);
     // console.log(e.target.dataset.name);
-
+    // props.playArp();
     props.setCards(props.card);
   }
 
