@@ -21,7 +21,7 @@ export default function BeerProduct(props) {
           </p>
         </div>
         <div className="dots"></div>
-        <p className="price">${props.price() * (props.isHappyHour ? 0.5 : 1)}</p>
+        <p className="price">{props.price() * (props.isHappyHour ? 0.5 : 1)}kr</p>
       </article>
     </li>
   );

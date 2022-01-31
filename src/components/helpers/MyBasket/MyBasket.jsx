@@ -32,7 +32,7 @@ export default function MyBasket(props) {
       <button className="deleteItem" data-name={order.name} onClick={noBeer}>
         X
       </button>
-      {order.amount} {order.name} ${order.price()}
+      {order.amount} {order.name} {order.price()}kr
       <div className="actions">
         <div className="amountWrapper">
           <button data-name={order.name} onClick={handleClickMinus}>
@@ -80,7 +80,7 @@ export default function MyBasket(props) {
       <div className="totalOrder">
         <p>{total} items</p>
         <p>
-          Total: <span> ${sum}</span>
+          Total: <span> {sum}kr</span>
         </p>
       </div>
       {orders.length > 0 && (
