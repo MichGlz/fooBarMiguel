@@ -262,6 +262,8 @@ function App() {
                 setIsYourOrderReady={setIsYourOrderReady}
                 yourOrderReady={yourOrderReady}
                 setYourOrderReady={setYourOrderReady}
+                isCustomer={isCustomer}
+                setIsCustomer={setIsCustomer}
               />
             }
           />

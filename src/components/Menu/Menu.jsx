@@ -13,6 +13,10 @@ export default function Menu(props) {
   const beers = props.products.filter((beer) => beer.onTap);
   const [basket, setBasket] = useState([]);
 
+  useEffect(() => {
+    props.setIsCustomer(true);
+  }, []);
+
   //---------------moved to app-----------
   // const [ordersID, setOrdersID] = useState([]);
   // const [customerName, setCustomerName] = useState("");
@@ -127,7 +131,7 @@ export default function Menu(props) {
       <div className="Layout">
         {props.isYourOrderReady && <ModalOrderReady {...props.yourOrderReady} setIsYourOrderReady={props.setIsYourOrderReady} />}
         {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} className="confetti" />}
-        {props.cart ? (
+        {!props.cart ? (
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
         ) : (
           <Basket

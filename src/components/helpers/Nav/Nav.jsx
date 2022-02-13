@@ -31,7 +31,7 @@ export default function Nav(props) {
                 props.changeCartState(!props.cart);
               }}
             >
-              {props.isMobile ? (!props.cart ? "Menu" : "Cart") : "Menu"}
+              {props.isMobile ? (!props.cart ? "Cart" : "Menu") : "Menu"}
             </NavLink>
           </li>
         )}
