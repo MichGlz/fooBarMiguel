@@ -16,7 +16,7 @@ export default function CartBtn(props) {
         props.setCart(!props.cart);
       }}
     >
-      <span>{props.cart ? total : "X"}</span>
+      <span>{props.cart ? "X" : total}</span>
     </NavLink>
   ) : null;
 }
