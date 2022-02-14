@@ -23,7 +23,7 @@
     transition: transform 0.2s;
 
     &:hover {
-      transform: scale(1.05);
+      transform: translate(0px, 0px) scale(1.05);
     }
 
     &.mobile:hover {

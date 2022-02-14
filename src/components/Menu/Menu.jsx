@@ -129,7 +129,7 @@ export default function Menu(props) {
   if (props.isMobile) {
     return (
       <div className="Layout">
-        {props.isYourOrderReady && <ModalOrderReady {...props.yourOrderReady} setIsYourOrderReady={props.setIsYourOrderReady} isNobile={props.isMobile} />}
+        {props.isYourOrderReady && <ModalOrderReady {...props.yourOrderReady} setIsYourOrderReady={props.setIsYourOrderReady} isMobile={props.isMobile} />}
         {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} className="confetti" />}
         {!props.cart ? (
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
