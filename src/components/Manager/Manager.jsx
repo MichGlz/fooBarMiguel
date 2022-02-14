@@ -3,10 +3,16 @@ import Inventory from "../helpers/Inventory/Inventory";
 import Workers from "../helpers/Workers/Workers";
 import TopBeer from "../helpers/Ranking/Ranking";
 import Sales from "../helpers/Sales/Sales";
+import Login from "../helpers/Login/Login";
+import React, { useState } from "react";
 
 export default function Manager(props) {
+  const [access, setAccess] = useState();
   if (!props.bartenders) {
     return null;
+  }
+  if (!access) {
+    return <Login setAccess={setAccess} />;
   }
 
   return (

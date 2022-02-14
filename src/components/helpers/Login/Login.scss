@@ -1,0 +1,36 @@
+.login-modal {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  h1 {
+    margin-bottom: 1rem !important;
+    max-width: max(7ch, 60%);
+    text-align: center;
+  }
+
+  p {
+    margin-top: 1.5rem;
+  }
+
+  input {
+    color: black;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    background-color: #54b3ff;
+    margin-top: 2em;
+  }
+}
