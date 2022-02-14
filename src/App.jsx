@@ -10,6 +10,7 @@ import Barteneder from "./components/Bartender/Bartender";
 import Home from "./components/Home/Home";
 import Footer from "./components/helpers/Footer/Footer";
 import Header from "./components/helpers/Header/Header";
+import Spiner from "./components/helpers/Spiner/Spiner";
 import timeManager from "./modules/timeManager";
 
 function App() {
@@ -206,72 +207,75 @@ function App() {
     }
     return;
   }
+  if (!data.bartenders) {
+    return <Spiner />;
+  } else {
+    return (
+      <div className="App">
+        <Header changeCartState={changeCartState} cart={cart} isCustomer={isCustomer} />
 
-  return (
-    <div className="App">
-      <Header changeCartState={changeCartState} cart={cart} isCustomer={isCustomer} />
+        <main>
+          <Routes>
+            <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
+            <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} dayOrders={dayOrders} />} />
+            <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
 
-      <main>
-        <Routes>
-          <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
-          <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} dayOrders={dayOrders} />} />
-          <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
+            <Route
+              exact
+              path="/Dashboard"
+              element={
+                <Customer
+                  {...data}
+                  now={now}
+                  ordersReady={ordersReady}
+                  isHappyHour={isHappyHour}
+                  isOpen={isOpen}
+                  products={products}
+                  isCustomer={isCustomer}
+                  setIsCustomer={setIsCustomer}
+                  isMobile={isMobile}
+                  ordersID={ordersID}
+                  setOrdersID={setOrdersID}
+                  customerName={customerName}
+                  setCustomerName={setCustomerName}
+                  isYourOrderReady={isYourOrderReady}
+                  setIsYourOrderReady={setIsYourOrderReady}
+                  yourOrderReady={yourOrderReady}
+                  setYourOrderReady={setYourOrderReady}
+                />
+              }
+            />
 
-          <Route
-            exact
-            path="/Dashboard"
-            element={
-              <Customer
-                {...data}
-                now={now}
-                ordersReady={ordersReady}
-                isHappyHour={isHappyHour}
-                isOpen={isOpen}
-                products={products}
-                isCustomer={isCustomer}
-                setIsCustomer={setIsCustomer}
-                isMobile={isMobile}
-                ordersID={ordersID}
-                setOrdersID={setOrdersID}
-                customerName={customerName}
-                setCustomerName={setCustomerName}
-                isYourOrderReady={isYourOrderReady}
-                setIsYourOrderReady={setIsYourOrderReady}
-                yourOrderReady={yourOrderReady}
-                setYourOrderReady={setYourOrderReady}
-              />
-            }
-          />
-
-          <Route
-            exact
-            path="/Menu"
-            element={
-              <Menu
-                products={products}
-                cart={cart}
-                isMobile={isMobile}
-                ordersReady={ordersReady}
-                isHappyHour={isHappyHour}
-                setCart={setCart}
-                ordersID={ordersID}
-                setOrdersID={setOrdersID}
-                customerName={customerName}
-                setCustomerName={setCustomerName}
-                isYourOrderReady={isYourOrderReady}
-                setIsYourOrderReady={setIsYourOrderReady}
-                yourOrderReady={yourOrderReady}
-                setYourOrderReady={setYourOrderReady}
-                isCustomer={isCustomer}
-                setIsCustomer={setIsCustomer}
-              />
-            }
-          />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
-  );
+            <Route
+              exact
+              path="/Menu"
+              element={
+                <Menu
+                  products={products}
+                  cart={cart}
+                  isMobile={isMobile}
+                  ordersReady={ordersReady}
+                  isHappyHour={isHappyHour}
+                  setCart={setCart}
+                  ordersID={ordersID}
+                  setOrdersID={setOrdersID}
+                  customerName={customerName}
+                  setCustomerName={setCustomerName}
+                  isYourOrderReady={isYourOrderReady}
+                  setIsYourOrderReady={setIsYourOrderReady}
+                  yourOrderReady={yourOrderReady}
+                  setYourOrderReady={setYourOrderReady}
+                  isCustomer={isCustomer}
+                  setIsCustomer={setIsCustomer}
+                />
+              }
+            />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;

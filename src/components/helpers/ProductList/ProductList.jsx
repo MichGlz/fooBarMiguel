@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Product from "./Product/Product";
 import "./ProductList.scss";
+import Spiner from "../Spiner/Spiner";
 
 export default function ProductList(props) {
   const [sortBy, setSortBy] = useState("name");
@@ -48,7 +49,7 @@ export default function ProductList(props) {
           </button>
         </div>
       </div>
-      <section className="menu-beers">{beers}</section>
+      <section className="menu-beers">{beers.length > 4 ? beers : <Spiner />}</section>
     </section>
   );
 }

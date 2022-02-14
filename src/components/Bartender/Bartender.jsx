@@ -4,6 +4,7 @@ import React from "react";
 import TimeToClose from "../helpers/TimeToClose/TimeToClose";
 import OrderList from "../helpers/OrderList/OrderList";
 import Bulb from "../helpers/Bulb/Bulb";
+import Spiner from "../helpers/Spiner/Spiner";
 import { useState } from "react";
 
 function Keg(props) {
@@ -63,7 +64,7 @@ function Depot(props) {
 
 export default function Bartender(props) {
   if (!props.taps) {
-    return null;
+    return <Spiner />;
   }
 
   return (

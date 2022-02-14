@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import BeersMenu from "../helpers/BeersMenu/BeersMenu.jsx";
 import MemoryGame from "../helpers/MemoryGame/MemoryGame.jsx";
 import ModalOrderReady from "../helpers/ModalOrderReady/ModalOrderReady";
+import Spiner from "../helpers/Spiner/Spiner";
 
 function Beers(props) {
   const allOrders = [...props.serving, ...props.queue];
@@ -21,7 +22,7 @@ function Beers(props) {
 
 export default function Customer(props) {
   if (!props.taps) {
-    return null;
+    return <Spiner />;
   }
 
   useEffect(() => {

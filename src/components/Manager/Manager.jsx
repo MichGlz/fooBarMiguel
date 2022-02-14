@@ -4,12 +4,13 @@ import Workers from "../helpers/Workers/Workers";
 import TopBeer from "../helpers/Ranking/Ranking";
 import Sales from "../helpers/Sales/Sales";
 import Login from "../helpers/Login/Login";
+import Spiner from "../helpers/Spiner/Spiner";
 import React, { useState } from "react";
 
 export default function Manager(props) {
   const [access, setAccess] = useState();
   if (!props.bartenders) {
-    return null;
+    return <Spiner />;
   }
   if (!access) {
     return <Login setAccess={setAccess} />;

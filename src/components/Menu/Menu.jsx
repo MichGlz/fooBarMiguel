@@ -4,11 +4,12 @@ import ModalOrderReady from "../helpers/ModalOrderReady/ModalOrderReady";
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import CartBtn from "../helpers/CartBtn/CartBtn";
+import Spiner from "../helpers/Spiner/Spiner";
 
 import "./Menu.scss";
 export default function Menu(props) {
   if (!props.products) {
-    return null;
+    return <Spiner />;
   }
   const beers = props.products.filter((beer) => beer.onTap);
   const [basket, setBasket] = useState([]);
