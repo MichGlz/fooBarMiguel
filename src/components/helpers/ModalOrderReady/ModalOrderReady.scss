@@ -19,12 +19,16 @@
     padding: 0.2rem 1rem;
     border-radius: 10px;
     background-color: #54b3ff;
-    transform-origin: auto;
+    transform-origin: center;
     transition: transform 0.2s;
 
-    // &:hover {
-    //   transform: scale(1.05);
-    // }
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &.mobile:hover {
+      transform: unset;
+    }
   }
 
   svg {

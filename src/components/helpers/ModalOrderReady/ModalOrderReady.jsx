@@ -34,7 +34,7 @@ export default function ModalOrderReady(props) {
 
             <foreignObject x="223.29" y="132.86" width="122.86" height="48.88">
               <button
-                className="ok-btn-modal"
+                className={props.isMobile ? "ok-btn-modal.mobile" : "ok-btn-modal"}
                 onClick={() => {
                   props.setIsYourOrderReady(false);
                 }}
