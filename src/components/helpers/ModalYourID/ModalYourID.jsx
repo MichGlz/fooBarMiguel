@@ -20,6 +20,7 @@ export default function ModalYourID(props) {
                 className="ok-btn-modal"
                 onClick={() => {
                   props.setIsModalYourID(false);
+                  props.setCart(false);
                 }}
               >
                 OK

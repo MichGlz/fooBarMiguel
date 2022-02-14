@@ -91,7 +91,7 @@ export default function MyBasket(props) {
           ) : null}
         </div>
       )}
-      {isModalYourID && <ModalYourID ordersID={props.ordersID} setIsModalYourID={setIsModalYourID} />}
+      {isModalYourID && <ModalYourID ordersID={props.ordersID} setIsModalYourID={setIsModalYourID} setCart={props.setCart} />}
     </div>
   );
 }

@@ -146,6 +146,7 @@ export default function Menu(props) {
             ordersID={props.ordersID}
             customerName={props.customerName}
             setCustomerName={props.setCustomerName}
+            setCart={props.setCart}
           />
         )}
         <CartBtn basket={basket} cart={props.cart} setCart={props.setCart} />
