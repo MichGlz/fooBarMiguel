@@ -5,8 +5,8 @@ export default function Login(props) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
-  const usernameOriginal = "manager";
-  const passwordOriginal = "test123";
+  const usernameOriginal = "admin";
+  const passwordOriginal = "1234";
 
   function handleSubmit(e) {
     e.preventDefault();
