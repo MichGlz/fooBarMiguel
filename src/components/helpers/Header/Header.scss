@@ -75,7 +75,15 @@
     }
   }
   .mobileHeader {
-    color: black;
+    nav {
+      a {
+        color: black;
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem 0;
+      }
+    }
+
     h1 {
       color: black;
     }
