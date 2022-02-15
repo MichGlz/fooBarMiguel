@@ -173,6 +173,7 @@ export default function Menu(props) {
           ordersID={props.ordersID}
           customerName={props.customerName}
           setCustomerName={props.setCustomerName}
+          setCart={props.setCart}
         />
       </div>
     );

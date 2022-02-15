@@ -9,7 +9,7 @@ export default function TopBeer(props) {
     realRanking = [...realRanking, beer];
   }
   let rankingSort = realRanking.sort((a, b) => b.amount - a.amount);
-  const rankingMap = rankingSort.map((keg, i) => <li key={i}>{keg.name}</li>);
+  const rankingMap = rankingSort.map((keg, i) => <li key={i}>{keg.name + " " + keg.amount}</li>);
 
   return (
     <div className="topBeer">

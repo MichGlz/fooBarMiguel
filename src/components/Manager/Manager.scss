@@ -13,6 +13,15 @@
     grid-column: 1/-1;
     margin-top: 1rem;
   }
+
+  .topBeer {
+    ul {
+      width: 110%;
+    }
+    li {
+      font-size: 1rem;
+    }
+  }
 }
 
 @media screen and (max-width: 1020px) {
