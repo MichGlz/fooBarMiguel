@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.scss";
 
-export default function Login({ setAccess }) {
+export default function Login(props) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
@@ -13,7 +13,13 @@ export default function Login({ setAccess }) {
     const access = username === usernameOriginal && password === passwordOriginal;
     if (access) {
       console.log("it's a match");
-      setAccess(access);
+      if (props.isCustomer) {
+        props.setIsCustomer(false);
+      } else {
+        props.setAccess(access);
+      }
+    } else {
+      alert("The password or user are not correct");
     }
   }
 

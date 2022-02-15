@@ -8,12 +8,12 @@ import Spiner from "../helpers/Spiner/Spiner";
 import React, { useState } from "react";
 
 export default function Manager(props) {
-  const [access, setAccess] = useState();
+  // const [access, setAccess] = useState();
   if (!props.bartenders) {
     return <Spiner />;
   }
-  if (!access) {
-    return <Login setAccess={setAccess} />;
+  if (!props.access) {
+    return <Login setAccess={props.setAccess} />;
   }
 
   return (

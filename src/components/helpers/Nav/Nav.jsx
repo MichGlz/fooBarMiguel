@@ -4,7 +4,7 @@ export default function Nav(props) {
     <nav className="navigation">
       <ul className={props.click ? "nav-options active" : "nav-options"}>
         <li className="option" onClick={props.closeMobileMenu}>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">{props.isCustomer ? "Exit" : "Home"}</NavLink>
         </li>
 
         {!props.isCustomer && (
@@ -24,6 +24,7 @@ export default function Nav(props) {
           onClick={() => {
             props.closeMobileMenu();
             props.changeCartState(true);
+            props.setAccess(false);
           }}
         >
           <NavLink to="/Dashboard">{!props.isCustomer ? "Customers" : "Dashboard"}</NavLink>

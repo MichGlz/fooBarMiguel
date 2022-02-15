@@ -1,11 +1,10 @@
 import "./Home.scss";
+import Login from "../helpers/Login/Login";
 import { useEffect } from "react";
 export default function Home(props) {
-  useEffect(() => {
-    if (props.isCustomer) {
-      props.setIsCustomer(false);
-    }
-  }, []);
-
-  return <div className="Home"></div>;
+  if (props.isCustomer) {
+    return <Login {...props} />;
+  } else {
+    return <div className="Home"></div>;
+  }
 }

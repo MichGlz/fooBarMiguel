@@ -52,10 +52,15 @@
       gap: 1rem;
       padding: 1rem 2rem;
     }
+  }
 
-    @media screen and (max-width: 1030px) {
+  @media screen and (max-width: 1182px) {
+    .Depot {
       overflow-y: scroll;
+
       ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         height: auto;
       }
     }
@@ -64,10 +69,50 @@
   @media screen and (max-width: 1020px) {
     grid-template-columns: 1fr;
   }
-}
 
-.Bartender > * {
-  grid-column-start: 1;
+  .OrderList {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: -1;
+    display: grid;
+    grid-template-columns: 1fr 80% 1fr;
+    gap: 1rem;
+    height: 75vh;
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0, 0.25);
+    filter: drop-shadow(0px 0px 2px black);
+
+    .to-do {
+      grid-column-start: 2;
+    }
+
+    ul li ul {
+      border: solid 2px white;
+      padding: 3px;
+      transition: 0.5s;
+    }
+
+    ul li + li {
+      margin-top: 0.5rem;
+    }
+
+    li.Order {
+      transition: color 0.2s;
+    }
+
+    li.Order + li.Order {
+      margin-top: 1rem;
+    }
+
+    @media screen and (max-width: 1030px) {
+      width: 100%;
+      padding: 2rem 1rem;
+      grid-template-columns: 1fr;
+      .to-do {
+        grid-column-start: 1;
+      }
+    }
+  }
 }
 
 ul {
@@ -77,48 +122,8 @@ ul {
   padding: 0;
 }
 
-.OrderList {
-  grid-column-start: 2;
-  grid-row-start: 2;
-  grid-row-end: -1;
-  display: grid;
-  grid-template-columns: 1fr 80% 1fr;
-  gap: 1rem;
-  height: 75vh;
-  overflow-y: scroll;
-  background-color: rgba(0, 0, 0, 0.25);
-  filter: drop-shadow(0px 0px 2px black);
-
-  .to-do {
-    grid-column-start: 2;
-  }
-
-  ul li ul {
-    border: solid 2px white;
-    padding: 3px;
-    transition: 0.5s;
-  }
-
-  ul li + li {
-    margin-top: 0.5rem;
-  }
-
-  li.Order {
-    transition: color 0.2s;
-  }
-
-  li.Order + li.Order {
-    margin-top: 1rem;
-  }
-
-  @media screen and (max-width: 1030px) {
-    width: 100%;
-    padding: 2rem 1rem;
-    grid-template-columns: 1fr;
-    .to-do {
-      grid-column-start: 1;
-    }
-  }
+.Bartender > * {
+  grid-column-start: 1;
 }
 
 @media screen and (max-width: 400px) {
