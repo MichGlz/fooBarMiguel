@@ -1,27 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.scss";
+import fetchUser from "../../../modules/fetchUser";
 
 export default function Login(props) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
+  const [user, setUser] = useState();
 
   const usernameOriginal = "admin";
   const passwordOriginal = "1234";
 
   function handleSubmit(e) {
     e.preventDefault();
-    const access = username === usernameOriginal && password === passwordOriginal;
-    if (access) {
-      console.log("it's a match");
-      if (props.isCustomer) {
-        props.setIsCustomer(false);
-      } else {
-        props.setAccess(access);
-      }
-    } else {
-      alert("The password or user are not correct");
-    }
+    fetchUser(username, setUser);
   }
+
+  useEffect(() => {
+    if (user) {
+      const access = username === user.username && password === user.password;
+      console.log(access);
+      if (access) {
+        console.log("it's a match");
+        if (props.isCustomer) {
+          props.setIsCustomer(false);
+        } else {
+          props.setAccess(true);
+        }
+      } else {
+        alert("The password or user are not correct");
+      }
+    }
+  }, [user]);
 
   return (
     <div className="login-modal">

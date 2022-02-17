@@ -211,6 +211,7 @@ function App() {
     }
     return;
   }
+
   if (!data.bartenders) {
     return <Spiner />;
   } else {
