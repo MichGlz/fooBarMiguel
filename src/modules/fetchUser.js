@@ -1,4 +1,4 @@
-export default function fetchUser(user, setUser) {
+export default function fetchUser(user, setUser, setIsFetchin) {
   fetch(`https://reicpe-9cc2.restdb.io/rest/foobarusers?q={"username": "${user}"}`, {
     method: "GET",
     headers: {
@@ -9,8 +9,10 @@ export default function fetchUser(user, setUser) {
     .then((data) => {
       console.log(data);
       setUser(data[0]);
+      setIsFetchin(false);
     })
     .catch((err) => {
       console.error(err);
+      setIsFetchin(false);
     });
 }

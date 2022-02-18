@@ -12,15 +12,27 @@
   .header {
     grid-column: 1/-1;
     margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-right: 2rem;
   }
 
   .topBeer {
     ul {
-      width: 110%;
+      width: 100%;
+      padding: 1rem;
     }
     li {
       font-size: 1rem;
     }
+  }
+
+  .log-out {
+    background-color: var(--blue);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
   }
 }
 

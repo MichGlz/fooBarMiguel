@@ -25,6 +25,7 @@ export default function Nav(props) {
             props.closeMobileMenu();
             props.changeCartState(true);
             props.setAccess(false);
+            props.setFullAccess(false);
           }}
         >
           <NavLink to="/Dashboard">{!props.isCustomer ? "Customers" : "Dashboard"}</NavLink>

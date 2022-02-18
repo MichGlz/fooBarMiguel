@@ -8,12 +8,11 @@ import Spiner from "../helpers/Spiner/Spiner";
 import React, { useState } from "react";
 
 export default function Manager(props) {
-  // const [access, setAccess] = useState();
   if (!props.bartenders) {
     return <Spiner />;
   }
-  if (!props.access) {
-    return <Login setAccess={props.setAccess} />;
+  if (!props.fullAccess) {
+    return <Login setAccess={props.setAccess} setFullAccess={props.setFullAccess} />;
   }
 
   return (
@@ -21,6 +20,14 @@ export default function Manager(props) {
       <section className="manager">
         <div className="header">
           <h2>Managers overview</h2>
+          <button
+            className="log-out"
+            onClick={() => {
+              props.setFullAccess(false);
+            }}
+          >
+            Log Out
+          </button>
         </div>
         <div>
           <Sales className="sales" {...props} />

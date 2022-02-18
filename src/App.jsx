@@ -49,7 +49,8 @@ function App() {
   //---------------------------------------
 
   //-------------login----------------
-  const [access, setAccess] = useState();
+  const [access, setAccess] = useState(false);
+  const [fullAccess, setFullAccess] = useState(false);
   //----------------------------------
 
   const isMobile = windowDimension <= 640;
@@ -217,12 +218,12 @@ function App() {
   } else {
     return (
       <div className="App">
-        <Header changeCartState={changeCartState} cart={cart} isCustomer={isCustomer} setAccess={setAccess} />
+        <Header changeCartState={changeCartState} cart={cart} isCustomer={isCustomer} setAccess={setAccess} setFullAccess={setFullAccess} />
 
         <main>
           <Routes>
-            <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} access={access} setAccess={setAccess} />} />
-            <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} dayOrders={dayOrders} access={access} setAccess={setAccess} />} />
+            <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} access={access} setAccess={setAccess} setFullAccess={setFullAccess} />} />
+            <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} dayOrders={dayOrders} access={access} setAccess={setAccess} fullAccess={fullAccess} setFullAccess={setFullAccess} />} />
             <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
 
             <Route

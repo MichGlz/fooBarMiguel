@@ -30,7 +30,17 @@ export default function Header(props) {
           <img src={props.isCustomer && isMobile ? "/assets/logo-02-black.svg" : "/assets/logo-02.svg"} alt="logo foobar" />
         </a>
       </div>
-      <Nav isMobile={isMobile} cart={props.cart} changeCartState={props.changeCartState} isCustomer={props.isCustomer} click={click} handleClick={handleClick} closeMobileMenu={closeMobileMenu} setAccess={props.setAccess} />
+      <Nav
+        isMobile={isMobile}
+        cart={props.cart}
+        changeCartState={props.changeCartState}
+        isCustomer={props.isCustomer}
+        click={click}
+        handleClick={handleClick}
+        closeMobileMenu={closeMobileMenu}
+        setAccess={props.setAccess}
+        setFullAccess={props.setFullAccess}
+      />
     </header>
   );
 }

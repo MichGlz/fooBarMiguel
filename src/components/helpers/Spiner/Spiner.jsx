@@ -1,6 +1,6 @@
 import "./Spiner.scss";
 
-export default function Spiner(props) {
+export default function Spiner() {
   return (
     <div className="black-screen">
       <div className="pacma-wrapper">
