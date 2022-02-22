@@ -36,7 +36,7 @@ export default function PieChart(props) {
   const mapLi = rankingSort.map((beer, i) => {
     if (beer.amount > 0) {
       return (
-        <li>
+        <li key={i + "li"}>
           <div className="dot" style={{ background: `${beer.color}` }}></div>
           <p>{beer.name + " " + beer.amount}</p>
         </li>
