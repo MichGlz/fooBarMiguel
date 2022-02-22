@@ -6,6 +6,7 @@ import Sales from "../helpers/Sales/Sales";
 import Login from "../helpers/Login/Login";
 import Spiner from "../helpers/Spiner/Spiner";
 import React, { useState } from "react";
+import PieChart from "../helpers/PieChart/PieChart";
 
 export default function Manager(props) {
   if (!props.bartenders) {
@@ -34,6 +35,7 @@ export default function Manager(props) {
           <Workers className="workers" {...props} />
           <Inventory className="inventory" {...props} />
           <TopBeer isAChart={true} {...props} />
+          <PieChart ranking={props.ranking} />
         </div>
         <TopBeer className="topBeer" {...props} />
       </section>

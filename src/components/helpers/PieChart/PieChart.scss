@@ -1,0 +1,27 @@
+.Pie_chart {
+  height: 50vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 1rem;
+  justify-content: center;
+  svg {
+    width: 200px;
+    height: 200px;
+    .pie_slice {
+      transform-origin: center;
+      transition: 0.2s;
+    }
+  }
+  li {
+    display: flex;
+    gap: 1rem;
+    .dot {
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      background-color: aqua;
+    }
+    font-size: 1rem;
+  }
+}
