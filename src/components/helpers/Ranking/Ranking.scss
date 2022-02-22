@@ -13,6 +13,36 @@
         margin: 1rem 0;
       }
     }
+    &.chart {
+      ul {
+        align-items: flex-start;
+        align-items: end;
+
+        width: 50%;
+      }
+      li {
+        display: flex;
+        gap: 1rem;
+
+        p {
+          font-size: 1rem;
+          background-color: rgba(0, 0, 0, 0.349);
+          padding: 0 1rem;
+        }
+      }
+      .chart_bar_wrapper {
+        width: max(15vw, 300px);
+        background-color: var(--dark);
+        height: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+      }
+      .chartBar {
+        background-color: var(--pink);
+        height: 100%;
+        transition: 0.2s;
+      }
+    }
   }
 }
 

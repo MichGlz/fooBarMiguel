@@ -33,6 +33,7 @@ export default function Manager(props) {
           <Sales className="sales" {...props} />
           <Workers className="workers" {...props} />
           <Inventory className="inventory" {...props} />
+          <TopBeer isAChart={true} {...props} />
         </div>
         <TopBeer className="topBeer" {...props} />
       </section>
