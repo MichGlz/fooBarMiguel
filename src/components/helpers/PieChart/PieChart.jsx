@@ -10,7 +10,7 @@ export default function PieChart(props) {
 
   for (const [key, value] of Object.entries({ ...props.ranking })) {
     // console.log(`${key}: ${value}`);
-    const beer = { name: key, amount: value, color: `hsl(${i * 48}, ${90}%, ${73}%)` };
+    const beer = { name: key, amount: value, color: `hsl(${i * 35}, ${90}%, ${73 - i}%)` };
     realRanking = [...realRanking, beer];
     i++;
   }
