@@ -10,9 +10,10 @@ export default function PieChart(props) {
 
   for (const [key, value] of Object.entries({ ...props.ranking })) {
     // console.log(`${key}: ${value}`);
-    const beer = { name: key, amount: value, color: `hsl(${i * 35}, ${90}%, ${73 - i}%)` };
+    let ii = i > 5 ? 30 : 0;
+    const beer = { name: key, amount: value, color: `hsl(${i * 60 + ii}, ${100}%, ${68}%)` };
     realRanking = [...realRanking, beer];
-    i++;
+    value > 0 && i++;
   }
 
   let rankingSort = realRanking.sort((a, b) => b.amount - a.amount);

@@ -1,10 +1,14 @@
 .Pie_chart {
-  height: 50vh;
+  height: fit-content;
+  width: fit-content;
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
-  padding: 1rem;
+  padding: 3rem;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.404);
+  border-radius: 1rem;
+  border: solid 2px white;
   svg {
     width: 200px;
     height: 200px;
@@ -12,6 +16,9 @@
       transform-origin: center;
       transition: 0.2s;
     }
+  }
+  ul {
+    padding-top: 1rem;
   }
   li {
     display: flex;
