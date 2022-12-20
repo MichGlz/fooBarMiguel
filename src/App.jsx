@@ -12,6 +12,8 @@ import Footer from "./components/helpers/Footer/Footer";
 import Header from "./components/helpers/Header/Header";
 import Spiner from "./components/helpers/Spiner/Spiner";
 import timeManager from "./modules/timeManager";
+import BeerTypes from "./beertypes.json";
+import FooBarData from "./foobardata.json";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
@@ -63,50 +65,80 @@ function App() {
   }
 
   //----------fetch beer types---------------
+  //momentary solution before server is working
   useEffect(() => {
-    fetch("https://los-amigos.herokuapp.com/beertypes")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        const beers = addStuff(data);
-        console.log(beers);
-        setProducts(beers);
-      });
+    //console.log("hola first useeEfect");
+    //console.log(BeerTypes);
+    let beerTypesJson = BeerTypes;
+    //console.log(beerTypesJson);
+    const beers = addStuff(beerTypesJson);
+    //console.log(beers);
+    setProducts(beers);
   }, []);
+
+  // useEffect(() => {
+  //   fetch("https://los-amigos.herokuapp.com/beertypes")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // console.log(data);
+  //       const beers = addStuff(data);
+  //       console.log(beers);
+  //       setProducts(beers);
+  //     });
+  // }, []);
   //-----------------------------------------
 
   //-----fetch data every 5sec---------------
+
+  //momentary solution before server is working
   useEffect(() => {
-    const URL = "https://los-amigos.herokuapp.com/";
-    // (1) define within effect callback scope
-    const fetchData = async () => {
-      try {
-        const res = await fetch(URL);
-        const data = await res.json();
-        setData(data);
-        checkTaps(data);
-        setNewServing(
-          data.serving.map(function (order) {
-            const bartender = data.bartenders.find((man) => man.servingCustomer === order.id);
-            return { ...order, bartender: bartender.name };
-          })
+    //console.log("hola second useeEfect");
+    const data = FooBarData;
+    setData(data);
+    checkTaps(data);
+    setNewServing(
+      data.serving.map(function (order) {
+        const bartender = data.bartenders.find(
+          (man) => man.servingCustomer === order.id
         );
-        setAllOrders([...data.queue, ...data.serving]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData(); // <-- (2) invoke on mount
-
-    const id = setInterval(() => {
-      fetchData(); // <-- (3) invoke in interval callback
-    }, 5000);
-
-    return () => {
-      clearInterval(id);
-    };
+        return { ...order, bartender: bartender.name };
+      })
+    );
+    setAllOrders([...data.queue, ...data.serving]);
   }, []);
+  // useEffect(() => {
+  //   const URL = "https://los-amigos.herokuapp.com/";
+  //   // (1) define within effect callback scope
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch(URL);
+  //       const data = await res.json();
+  //       setData(data);
+  //       checkTaps(data);
+  //       setNewServing(
+  //         data.serving.map(function (order) {
+  //           const bartender = data.bartenders.find(
+  //             (man) => man.servingCustomer === order.id
+  //           );
+  //           return { ...order, bartender: bartender.name };
+  //         })
+  //       );
+  //       setAllOrders([...data.queue, ...data.serving]);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchData(); // <-- (2) invoke on mount
+
+  //   const id = setInterval(() => {
+  //     fetchData(); // <-- (3) invoke in interval callback
+  //   }, 5000);
+
+  //   return () => {
+  //     clearInterval(id);
+  //   };
+  // }, []);
   //-----------------------------------------
 
   //------up date now every 1sec-------------
@@ -135,7 +167,9 @@ function App() {
   useEffect(() => {
     if (oldServing.length > 0) {
       oldServing.forEach((oldOrder, i, arr) => {
-        const findIt = [...newServing].find((newOrder) => newOrder.id === oldOrder.id);
+        const findIt = [...newServing].find(
+          (newOrder) => newOrder.id === oldOrder.id
+        );
 
         !findIt && upDateOrdersReady(oldOrder);
         !findIt && setDayOrders(dayOrders + 1);
@@ -196,7 +230,9 @@ function App() {
 
   function upDateOrdersReady(order) {
     if (!ordersReady.find((element) => element.id === order.id)) {
-      const orderLowerCase = order.order.map((beer) => beer.toLowerCase().split(" ").join(""));
+      const orderLowerCase = order.order.map((beer) =>
+        beer.toLowerCase().split(" ").join("")
+      );
 
       orderLowerCase.forEach((beer) => {
         setRanking((oldRanking) => {
@@ -219,13 +255,60 @@ function App() {
   } else {
     return (
       <div className="App">
-        <Header changeCartState={changeCartState} cart={cart} isCustomer={isCustomer} setAccess={setAccess} setFullAccess={setFullAccess} />
+        <Header
+          changeCartState={changeCartState}
+          cart={cart}
+          isCustomer={isCustomer}
+          setAccess={setAccess}
+          setFullAccess={setFullAccess}
+        />
 
         <main>
           <Routes>
-            <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} access={access} setAccess={setAccess} setFullAccess={setFullAccess} />} />
-            <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} dayOrders={dayOrders} access={access} setAccess={setAccess} fullAccess={fullAccess} setFullAccess={setFullAccess} />} />
-            <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
+            <Route
+              exact
+              path="/"
+              element={
+                <Home
+                  isCustomer={isCustomer}
+                  setIsCustomer={setIsCustomer}
+                  access={access}
+                  setAccess={setAccess}
+                  setFullAccess={setFullAccess}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/Manager"
+              element={
+                <Manager
+                  {...data}
+                  now={now}
+                  products={products}
+                  ranking={ranking}
+                  dayOrders={dayOrders}
+                  access={access}
+                  setAccess={setAccess}
+                  fullAccess={fullAccess}
+                  setFullAccess={setFullAccess}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/Bartender"
+              element={
+                <Barteneder
+                  {...data}
+                  now={now}
+                  upDateOrdersReady={upDateOrdersReady}
+                  ordersReady={ordersReady}
+                  isHappyHour={isHappyHour}
+                  isOpen={isOpen}
+                />
+              }
+            />
 
             <Route
               exact
